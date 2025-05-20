@@ -1,0 +1,126 @@
+# # Routes
+# # This file defines all application routes (Higher priority routes first)
+# # https://www.playframework.com/documentation/latest/ScalaRouting
+# # ~~~~
+
+
+# Routes for Authlete-Play
+
+# Authorization endpoints
+GET    /authorization         controllers.AuthorizationController.authorizationGet
+POST   /authorization         controllers.AuthorizationController.authorizationPost
+
+# Authorization Decision
+POST   /authorization/decision        controllers.AuthorizationDecisionController.authorizationDecision
+
+# Client Registration
+POST /register                     controllers.ClientRegistrationController.post 
+GET /register/:id                     controllers.ClientRegistrationController.read(id)
+PUT /register/:id                     controllers.ClientRegistrationController.update(id)
+DELETE /register/:id                    controllers.ClientRegistrationController.delete(id)
+
+# # Backchannel Authentication endpoints
+# POST    /backchannelentication controllers.AuthleteController.backchannelAuthentication
+# POST    /backchannelenticationComplete controllers.AuthleteController.backchannelAuthenticationComplete
+# POST    /backchannelenticationFail controllers.AuthleteController.backchannelAuthenticationFail
+# POST    /backchannelenticationIssue controllers.AuthleteController.backchannelAuthenticationIssue
+
+# # Client Authorization and Scopes-related endpoints
+# POST    /client/extension/deleteRequestableScopes/:clientId controllers.AuthleteController.deleteRequestableScopes
+# POST    /client/extension/requestableScopes/:clientId controllers.AuthleteController.getRequestableScopes
+# POST    /client/extension/setRequestableScopes/:clientId controllers.AuthleteController.setRequestableScopes
+
+# # Client-related endpoints
+# POST    /client/create             controllers.AuthleteController.createClient
+# DELETE  /client/delete/:clientId   controllers.AuthleteController.deleteClient
+# GET     /client/get/:clientId      controllers.AuthleteController.getClient
+# GET     /client/list               controllers.AuthleteController.getClientList
+# POST    /client/registration       controllers.AuthleteController.dynamicClientRegister
+# DELETE  /client/registrationDelete controllers.AuthleteController.dynamicClientDelete
+# GET     /client/registrationGet    controllers.AuthleteController.dynamicClientGet
+# POST    /client/registrationUpdate controllers.AuthleteController.dynamicClientUpdate
+# POST    /client/update/:clientId   controllers.AuthleteController.updateClient
+
+# # Client Lock Flag endpoint
+# POST    /client/lockFlag           controllers.AuthleteController.updateClientLockFlag
+
+# # Credential-related endpoints
+# POST    /credential/batchIssue    controllers.AuthleteController.credentialBatchIssue
+# POST    /credential/batchParse    controllers.AuthleteController.credentialBatchParse
+# POST    /credential/deferredIssue controllers.AuthleteController.credentialDeferredIssue
+# POST    /credential/deferredParse controllers.AuthleteController.credentialDeferredParse
+# POST    /credential/issuerMetadata controllers.AuthleteController.credentialIssuerMetadata
+# POST    /credential/jwks          controllers.AuthleteController.credentialIssuerJwks
+# POST    /credential/jwtIssuerMetadata controllers.AuthleteController.credentialJwtIssuerMetadata
+# POST    /credential/offerCreate   controllers.AuthleteController.credentialOfferCreate
+# POST    /credential/offerInfo     controllers.AuthleteController.credentialOfferInfo
+# POST    /credential/singleIssue   controllers.AuthleteController.credentialSingleIssue
+# POST    /credential/singleParse   controllers.AuthleteController.credentialSingleParse
+
+# Device Authorization and Verification endpoints
+# POST    /device/authorization       controllers.DeviceController.deviceAuthorization
+# POST    /device/complete            controllers.AuthleteController.deviceComplete
+# POST    /device/verification       controllers.AuthleteController.deviceVerification
+
+# Echo endpoint
+# POST    /echo                     controllers.EchoController.echo
+
+# Federation 
+GET /federation/initiation/:federationId            controllers.FederationController.initiation(federationId)
+
+GET /federation/callback/:federationId            controllers.FederationController.callback(federationId)
+
+
+
+POST /federation/register                         controllers.FederationRegistrationController.entityConfiguration
+POST /federation/register                         controllers.FederationRegistrationController.trustChain
+
+# GM-related endpoint
+GET       /gm/:grantId                          controllers.GrantManagementController.gm(grantId)
+DELETE    /gm/:grantId                          controllers.GrantManagementController.revoke(grantId)
+# # ID Token Reissue endpoint
+# POST    /idTokenReissue            controllers.AuthleteController.idTokenReissue
+
+# # JWKS-related endpoints
+# POST    /service/jwks/get          controllers.AuthleteController.getServiceJwks
+
+# # Jose-related endpoint
+# POST    /jose/verify                controllers.JoseController.verifyJose
+
+# Revocation and introspection endpoints
+POST    /introspection             controllers.IntrospectionController.introspect
+
+GET /jwks                        controllers.JwksController.jwks
+# # Push Authorization Request endpoint
+ POST    /par                        controllers.PushedAuthRequestController.post
+
+# Revocation endpoints
+# POST    /revocation                controllers.RevocationController.revocation
+
+# Service-related endpoints
+# POST    /service                   controllers.ServiceController.create
+# DELETE  /service/:serviceId        controllers.ServiceController.delete
+# GET     /service/:serviceId        controllers.ServiceController.service
+# GET     /service                   controllers.ServiceController.service
+# PUT    /service                    controllers.ServiceController.update
+
+
+# Token endpoints
+ POST     /token                  controllers.TokenController.token
+# POST    /token                  controllers.TokenController.create
+# DELETE  /token/:token           controllers.TokenController.delete
+# POST    /token/revoke           controllers.TokenController.revoke
+# POST    /tokenUpdate            controllers.TokenController.update
+# POST    /token/batch            controllers.TokenController.batch
+# GET     /token/batchstatus/:requestId controllers.TokenController.getTokenCreateBatchStatus
+
+# Userinfo endpoints
+GET    /userinfo                          controllers.UserInfoController.userinfoGet
+POST   /userinfo                         controllers.UserInfoController.userinfoPost
+
+# HSK-related endpoints
+# POST    /hsk                      controllers.HSKController.create
+# DELETE  /hsk/:handle              controllers.HSKController.delete(handle)
+# GET     /hsk/:handle              controllers.HSKController.hsk(handle)
+# GET     /hsk                      controllers.HSKController.hsk
+
